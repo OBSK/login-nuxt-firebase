@@ -11,7 +11,7 @@
         md="12">
           <v-img
             :min-height="'calc(100vh - ' + $vuetify.application.top + 'px)'"
-            height="300px"
+            height="10rem"
             src="https://s2.best-wallpaper.net/wallpaper/1920x1080/1704/Bobber-motorcycle_1920x1080.jpg"
             >
             <v-theme-provider dark>
@@ -21,7 +21,7 @@
                       class="white--text mx-auto"
                       justify="center"
                     >
-                    <v-card class="elevation-12">
+                    <v-card class="elevation-12" max-width="300px" width="300px">
                         <v-toolbar
                           color="transparent"
                           dark
@@ -31,28 +31,35 @@
                         >
                           <v-spacer />
                         </v-toolbar>
+                        <form @submit.prevent="initSesion">
                         <v-card-text>
-                          <v-form>
                             <v-text-field
                               label="Correo electronico"
+                              v-model="email"
+                              required
                               name="login"
                               prepend-icon="mdi-account"
                               type="text"
                             />
 
                             <v-text-field
-                              id="password"
+                              v-model="password"
+                              required
                               label="Contraseña"
                               name="password"
                               prepend-icon="mdi-lock"
                               type="password"
                             />
-                          </v-form>
+                            <div>
+                              {{ error }}
+                            </div>
                         </v-card-text>
                         <v-card-actions>
+                          
                           <v-spacer />
-                          <v-btn color="primary">Iniciar sesión</v-btn>
+                          <v-btn color="teal" small type="submit">Iniciar sesión</v-btn>
                         </v-card-actions>
+                        </form>
                       </v-card>
                     </v-row>
                   </v-container>
@@ -65,13 +72,35 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
+import { mapActions, mapGetters, mapState } from 'vuex'
 
 export default {
   components: {
-    Logo,
-    VuetifyLogo
+  },
+  data() {
+    return {
+      email: '',
+      password: ''
+    }
+  },
+  methods: {
+    initSesion() {
+      this.iniciar({
+        email: this.email,
+        password: this.password
+      })
+    },
+    ...mapActions({
+      iniciar: 'iniciarSesion'
+    }),
+    
+  },
+  computed: {
+    ...mapState({
+      cars: state => state.list,
+      error: state => state.error
+    })
   }
+
 }
 </script>
