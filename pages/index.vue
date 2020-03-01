@@ -1,10 +1,11 @@
 <template>
+<section>
   <v-layout
     column
     justify-center
     align-center
   >
-      <v-row>
+      <v-row no-gutters>
         <v-col
         cols="12"
         md="12">
@@ -60,6 +61,7 @@
         </v-col>
       </v-row>
   </v-layout>
+</section>  
 </template>
 
 <script>

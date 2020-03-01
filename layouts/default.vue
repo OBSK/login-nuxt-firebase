@@ -32,12 +32,10 @@
       <v-toolbar-title v-text="title" />
     </v-app-bar>
     <v-content>
-      <v-container>
         <nuxt />
-      </v-container>
     </v-content>
     <v-footer
-      absolute
+      padless
       class="font-weight-medium"
     >
       <v-col
