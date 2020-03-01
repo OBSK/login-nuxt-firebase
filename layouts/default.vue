@@ -37,10 +37,16 @@
       </v-container>
     </v-content>
     <v-footer
-      :fixed="fixed"
-      app
+      absolute
+      class="font-weight-medium"
     >
-      <span>Created by [OBSK] {{ new Date().getFullYear() }}</span>
+      <v-col
+        class="text-center"
+        cols="12"
+      >
+        Created by <a href="https://www.facebook.com/jorge.huimaruiz">OBSK</a>
+        {{ new Date().getFullYear() }}
+      </v-col>
     </v-footer>
   </v-app>
 </template>

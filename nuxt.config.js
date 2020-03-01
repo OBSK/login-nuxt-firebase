@@ -6,7 +6,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
+    titleTemplate: 'Sistema de ventas vehiculares || ' + 'Pibe Motors ',
     title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
