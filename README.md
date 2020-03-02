@@ -1,6 +1,6 @@
 # pibemotos
 
-> My stupendous Nuxt.js project
+> Autenticación básica utilizando Nuxt y Firebase
 
 ## Build Setup
 
