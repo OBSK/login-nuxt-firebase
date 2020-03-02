@@ -21,46 +21,7 @@
                       class="white--text mx-auto"
                       justify="center"
                     >
-                    <v-card class="elevation-12" max-width="300px" width="300px">
-                        <v-toolbar
-                          color="transparent"
-                          dark
-                          flat
-                          prominent
-                          src="/Logo.png"
-                        >
-                          <v-spacer />
-                        </v-toolbar>
-                        <form @submit.prevent="initSesion">
-                        <v-card-text>
-                            <v-text-field
-                              label="Correo electronico"
-                              v-model="email"
-                              required
-                              name="login"
-                              prepend-icon="mdi-account"
-                              type="text"
-                            />
-
-                            <v-text-field
-                              v-model="password"
-                              required
-                              label="Contraseña"
-                              name="password"
-                              prepend-icon="mdi-lock"
-                              type="password"
-                            />
-                            <div>
-                              {{ error }}
-                            </div>
-                        </v-card-text>
-                        <v-card-actions>
-                          
-                          <v-spacer />
-                          <v-btn color="teal" small type="submit">Iniciar sesión</v-btn>
-                        </v-card-actions>
-                        </form>
-                      </v-card>
+                    <h1 class="headline">Hola mundo en <strong>Nuxt!!</strong> </h1>
                     </v-row>
                   </v-container>
                 </v-theme-provider>
@@ -73,6 +34,7 @@
 
 <script>
 import { mapActions, mapGetters, mapState } from 'vuex'
+import { auth } from '../plugins/firebaseConfig'
 
 export default {
   components: {
@@ -84,15 +46,6 @@ export default {
     }
   },
   methods: {
-    initSesion() {
-      this.iniciar({
-        email: this.email,
-        password: this.password
-      })
-    },
-    ...mapActions({
-      iniciar: 'iniciarSesion'
-    }),
     
   },
   computed: {
@@ -100,6 +53,16 @@ export default {
       cars: state => state.list,
       error: state => state.error
     })
+  },
+  mounted() {
+      auth.onAuthStateChanged((user) => {
+      if(user) {
+        // this.$router.push('/login');
+      } else {
+        console.log("No existe un usuario, redirigiendo...")
+        this.$router.push('/login');
+      }
+    });
   }
 
 }
