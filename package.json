@@ -1,7 +1,7 @@
 {
   "name": "pibemotos",
   "version": "1.0.0",
-  "description": "My stupendous Nuxt.js project",
+  "description": "Login básico utilizando Nuxt y Firebase",
   "author": "Arturo",
   "private": true,
   "scripts": {
